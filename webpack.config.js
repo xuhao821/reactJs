@@ -16,9 +16,13 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.less/, use: ['style','css','less']},
-            {test: /\.css$/, use: ['style','css'] },
-            {test: /\.(png|jpg|jpeg)$/, use: ['url']},
+            {test: /\.less/, use: ['style-loader','css-loader','less-loader']},
+            {test: /\.css$/,
+                exclude: /(static)/,
+                use: ['style-loader','css-loader'] },
+            {test: /\.(png|jpg|jpeg)$/,
+                exclude: /(static)/,
+                use: ['url-loader']},
             {test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
